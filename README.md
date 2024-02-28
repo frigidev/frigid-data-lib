@@ -1,5 +1,5 @@
 # FrigidDataLib
-Implementation of a data structures library, Linked List based.
+Implementation of a data structure library, Linked List based.
 
 # FrigidDataLib Documentation (English Ver.)
 
