@@ -23,5 +23,6 @@ public class Node {
 	
 	public Node(int element) {
 		this.value = element;
+		this.next = null;
 	}
 }
