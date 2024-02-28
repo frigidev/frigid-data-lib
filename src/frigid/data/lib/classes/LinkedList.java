@@ -31,6 +31,20 @@ public class LinkedList implements List, AdditionalMethods{
 		this.first = null;
 		this.last = null;
 	}
+
+	@Override
+	public void addBegin(int element) {
+		Node node = new Node(element);
+		int size = countNodes();
+		
+		if(isEmpty()) {
+			this.setLast(node);
+		}else {
+			node.setNext(this.getFirst());
+		}
+		this.setFirst(node);
+		size++;
+	}
 	
 	@Override
 	public void addEnd(int element) {
@@ -44,6 +58,34 @@ public class LinkedList implements List, AdditionalMethods{
 		}
 		this.setLast(node);
 		size++;
+	}
+
+	@Override
+	public void addMiddle(int element, int position) {
+		Node node = new Node(element);
+		Node current = this.getFirst();
+		Node aux;
+		int size = countNodes();
+		int i = 1;
+		
+		if(position == 1) {
+			addBegin(element);
+		}else if(position == size+1) {
+			addEnd(element);
+		}else if(position > size+1) {
+			System.out.println("The position desired exceed the size of the list.");
+		}else if(position < 0) {
+			System.out.println("The list begins in the position 1. Try a valid position.");
+		}else {
+			while(i < (position-1)) {
+				current = current.getNext();
+				i++;
+			}	
+			aux = current.getNext();
+			current.setNext(node);
+			node.setNext(aux);
+			size++;
+		}
 	}
 	
 	@Override
@@ -116,48 +158,6 @@ public class LinkedList implements List, AdditionalMethods{
 	public void destroy() {
 		this.setFirst(null);
 		this.setLast(null);
-	}
-
-	@Override
-	public void addBegin(int element) {
-		Node node = new Node(element);
-		int size = countNodes();
-		
-		if(isEmpty()) {
-			this.setLast(node);
-		}else {
-			node.setNext(this.getFirst());
-		}
-		this.setFirst(node);
-		size++;
-	}
-
-	@Override
-	public void addMiddle(int element, int position) {
-		Node node = new Node(element);
-		Node current = this.getFirst();
-		Node aux;
-		int size = countNodes();
-		int i = 1;
-		
-		if(position == 1) {
-			addBegin(element);
-		}else if(position == size+1) {
-			addEnd(element);
-		}else if(position > size+1) {
-			System.out.println("The position desired exceed the size of the list.");
-		}else if(position < 0) {
-			System.out.println("The list begins in the position 1. Try a valid position.");
-		}else {
-			while(i < (position-1)) {
-				current = current.getNext();
-				i++;
-			}	
-			aux = current.getNext();
-			current.setNext(node);
-			node.setNext(aux);
-			size++;
-		}
 	}
 
 	@Override
