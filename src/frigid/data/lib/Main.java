@@ -18,21 +18,20 @@ public class Main {
 		
 			switch(op) {
 				case 1:
-					int value = Integer.parseInt(JOptionPane.showInputDialog("Enter a number."));
+					int value = Integer.parseInt(JOptionPane.showInputDialog("Type a number."));
 					int position = Integer.parseInt(JOptionPane.showInputDialog("Do you want to insert your number in which position of the list?\n"
 							+ "1 - begin of the list\n2 - middle of the list\n3 - end of the list"));
 					if(position == 1) {
 						list.addBegin(value);
 					}else if(position == 2) {
-						JOptionPane.showMessageDialog(null, "Do you want to insert your number in which position of the middle of the list?");
-						int midPosition = Integer.parseInt(JOptionPane.showInputDialog(""));
+						int midPosition = Integer.parseInt(JOptionPane.showInputDialog("Do you want to insert your number in which position of the middle of the list?"));
 						list.addMiddle(value, midPosition);
 					}else if(position == 3) {
 						list.addEnd(value);
 					}
 					continue;
 				case 2:
-					int remove = Integer.parseInt(JOptionPane.showInputDialog("Remove a number."));
+					int remove = Integer.parseInt(JOptionPane.showInputDialog("Type a number to remove."));
 					list.remove(remove);
 					continue;
 				case 3:
@@ -47,7 +46,7 @@ public class Main {
 					JOptionPane.showMessageDialog(null, "The size of the list is: " + list.countNodes());
 					continue;
 				case 6:
-					int positionNode = Integer.parseInt(JOptionPane.showInputDialog("Enter a position that you want to know the number."));
+					int positionNode = Integer.parseInt(JOptionPane.showInputDialog("Type a position that you want to know the number."));
 					if(!list.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "The number of this position is:");
 					}
