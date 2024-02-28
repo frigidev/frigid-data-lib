@@ -1,5 +1,5 @@
 # FrigidDataLib
-My implementation of a data structures library, working with LinkedList.
+Implementation of a data structures library, Linked List based.
 
 # FrigidDataLib Documentation (English Ver.)
 
@@ -132,6 +132,8 @@ The main algorithm, where a menu was written, allows the execution and testing o
 #
 
 # Documentação (Versão em Português)
+
+Estruturas de Dados
 
 As estruturas de dados são as estruturas onde se armazenam os dados de uma aplicação. A estrutura de dados mais comum é o vetor/matriz, porém essa estrutura possui algumas desvantagens.
 
