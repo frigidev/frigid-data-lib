@@ -35,7 +35,6 @@ public class LinkedList implements List, AdditionalMethods{
 	@Override
 	public void addBegin(int element) {
 		Node node = new Node(element);
-		int size = countNodes();
 		
 		if(isEmpty()) {
 			this.setLast(node);
@@ -43,13 +42,11 @@ public class LinkedList implements List, AdditionalMethods{
 			node.setNext(this.getFirst());
 		}
 		this.setFirst(node);
-		size++;
 	}
 	
 	@Override
 	public void addEnd(int element) {
 		Node node = new Node(element);
-		int size = countNodes();
 		
 		if(isEmpty()) {
 			this.setFirst(node);
@@ -57,7 +54,6 @@ public class LinkedList implements List, AdditionalMethods{
 			this.getLast().setNext(node);
 		}
 		this.setLast(node);
-		size++;
 	}
 
 	@Override
@@ -74,7 +70,7 @@ public class LinkedList implements List, AdditionalMethods{
 			addEnd(element);
 		}else if(position > size+1) {
 			System.out.println("The position desired exceed the size of the list.");
-		}else if(position < 0) {
+		}else if(position < 1) {
 			System.out.println("The list begins in the position 1. Try a valid position.");
 		}else {
 			while(i < (position-1)) {
@@ -84,7 +80,6 @@ public class LinkedList implements List, AdditionalMethods{
 			aux = current.getNext();
 			current.setNext(node);
 			node.setNext(aux);
-			size++;
 		}
 	}
 	
@@ -102,11 +97,20 @@ public class LinkedList implements List, AdditionalMethods{
 			while(current != null && current.getValue() != element) {
 				previous = current;
 				current = current.getNext();
+				if(current == null) {
+					JOptionPane.showMessageDialog(null, "The number that you tried to remove was not found.");
+				}
 			}
 			
 			if(current != null) {
 				previous.setNext(current.getNext());
-				current.setNext(null);
+			}
+			/*
+			 * Previous points to the last node of the list, if all the list was traversed, then the conditional below has to fill this case
+			 * (when the element == the value of the last node of the list).
+			 */
+			if(previous.getValue() == element) {
+				previous = null;
 			}else {
 				this.setLast(previous);
 			}
@@ -120,7 +124,7 @@ public class LinkedList implements List, AdditionalMethods{
 		Node current = this.getFirst();
 		int size = countNodes();
 		
-		if(position < size+1 && current != null) {
+		if(position <= size && current != null && position > 0) {
 			for(int i=1; i<position; i++) { 
 				current = current.getNext();
 			}
@@ -132,7 +136,7 @@ public class LinkedList implements List, AdditionalMethods{
 
 	@Override
 	public int countNodes() {
-		Node ptr = this.getFirst();
+		Node current = this.getFirst();
 		int counter = 0;
 		/*
 		 * This control variable below is declared to avoid an emptyList() message at the invocation of this method when a first node is added to the
@@ -143,8 +147,8 @@ public class LinkedList implements List, AdditionalMethods{
 		if(this.getFirst() != null) {
 			control = 1;
 			if(!isEmpty() && control == 1) {
-				while(ptr != null) {
-					ptr = ptr.getNext();
+				while(current != null) {
+					current = current.getNext();
 					counter++;
 				}
 			}else {
@@ -162,13 +166,13 @@ public class LinkedList implements List, AdditionalMethods{
 
 	@Override
 	public void showList() {
-		Node ptr = this.getFirst();
+		Node current = this.getFirst();
 		int i = 1;
 		
 		if(!isEmpty()) {
-			while(ptr != null) {
-				System.out.println("Node: " + ptr.getValue() + " of the position: " + i + " of the list.");
-				ptr = ptr.getNext();
+			while(current != null) {
+				System.out.println("Node: " + current.getValue() + " of the position: " + i + " of the list.");
+				current = current.getNext();
 				i++;
 			}
 		}else {
