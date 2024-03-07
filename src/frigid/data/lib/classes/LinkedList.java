@@ -100,20 +100,21 @@ public class LinkedList implements List, AdditionalMethods{
 				if(current == null) {
 					JOptionPane.showMessageDialog(null, "The number that you tried to remove was not found.");
 				}
+				/*
+				 * Previous points to the last node of the list, if all the list was traversed, then the conditional below has to fill this case
+				 * (when the element == the value of the last node of the list).
+				 */
+				if(previous.getValue() == element) {
+					previous.setNext(null);
+				}
 			}
 			
 			if(current != null) {
 				previous.setNext(current.getNext());
 			}
-			/*
-			 * Previous points to the last node of the list, if all the list was traversed, then the conditional below has to fill this case
-			 * (when the element == the value of the last node of the list).
-			 */
-			if(previous.getValue() == element) {
-				previous = null;
-			}else {
-				this.setLast(previous);
-			}
+			
+			this.setLast(previous);
+			
 		}else {
 			ExceptionHandler.emptyList();
 		}
@@ -169,13 +170,12 @@ public class LinkedList implements List, AdditionalMethods{
 		Node current = this.getFirst();
 		int i = 1;
 		
-		if(!isEmpty()) {
-			while(current != null) {
-				System.out.println("Node: " + current.getValue() + " of the position: " + i + " of the list.");
-				current = current.getNext();
-				i++;
-			}
-		}else {
+		while(current != null) {
+			System.out.println("Node: " + current.getValue() + " of the position: " + i + " of the list.");
+			current = current.getNext();
+			i++;
+		}
+		if(isEmpty()) {
 			ExceptionHandler.emptyList();
 		}
 	}
