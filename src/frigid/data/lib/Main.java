@@ -54,7 +54,7 @@ public class Main {
 					continue;
 				case 7:
 					int moreOptions = Integer.parseInt(JOptionPane.showInputDialog("1 - to sort the numbers\n2 - to search a number\n3 - to show the pairs or odd numbers\n4 - to " +
-							"show the sum of all numbers"));
+							"show the sum of all numbers\n5 - back to main menu"));
 					switch(moreOptions) {
 						case 1: 
 							SortImplementation sortList = new SortImplementation();
@@ -84,8 +84,11 @@ public class Main {
 								ExceptionHandler.emptyList();
 							}
 							continue;
+						case 5:
+							continue;
 					}
 				case 8:
+					JOptionPane.showMessageDialog(null, "End of execution");
 					return;
 			}
 		}		
