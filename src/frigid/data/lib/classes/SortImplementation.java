@@ -7,7 +7,7 @@ public class SortImplementation implements Sort{
 
 	/*
 	 * This method is a simple sort algorithm, called bubbleSort, that works fine for sorting a small list of elements, with a 
-	 * space complexity of O(n^2) in the worst case.
+	 * time complexity of O(n^2) in the worst case.
 	 */
 	@Override
 	public LinkedList sort(LinkedList list) {
