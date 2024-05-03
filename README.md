@@ -1,7 +1,7 @@
 # FrigidDataLib
 Implementation of a data structure library, Linked List based.
 
-# FrigidDataLib Documentation (English Ver.)
+# Documentation (English Ver.)
 
 Data Structures
 
@@ -131,7 +131,7 @@ The main algorithm, where a menu was written, allows the execution and testing o
 
 #
 
-# Documentação (Versão em Português)
+# Documentação (Português)
 
 Estruturas de Dados
 
