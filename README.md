@@ -1,4 +1,4 @@
-# FrigidDataLib
+# frigid-data-lib
 Implementation of a data structure library, Linked List based.
 
 # Documentation (English Ver.)
