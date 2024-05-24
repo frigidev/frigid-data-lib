@@ -33,7 +33,7 @@ Interfaces
 
 1.1 List Interface
 
-This interface contains all the methods that must be implemented by a linked list of integers.
+This interface contains all the methods that must be implemented by a list of integers.
 
 1.2 Search Interface
 
@@ -67,11 +67,11 @@ The linked list can remove nodes from any position in the list.
 
 2.2.3 getNode() Method
 
-The linked list can return the value of a node based on its position in the list.
+The linked list can return the value of a node based on its position in the list. Return -1 in case of SizeException().
 
 2.2.4 countNodes() Method
 
-The linked list can return the number of nodes that exist in the list (its size) using this method. The return value of this method is used in several other operations of the list.
+The linked list can return the number of nodes that exist in the list (its size) using this method. The return value of this method is used in several other operations of the list. Return 0 in case of EmptyList().
 
 2.2.5 destroy() Method
 
@@ -83,7 +83,7 @@ The linked list can return each node, in a linear way, displaying the node value
 
 2.2.7 firstNode() and lastNode() Methods
 
-The linked list can display the first and last node of the list using these methods.
+The linked list can display the first and last node of the list using these methods. They both return 0 in case of EmptyList().
 
 2.2.8 isEmpty() Method
 
@@ -113,9 +113,10 @@ This class implements the linear search algorithm in the linked list. The Search
 
 The linear search, through its search method, is capable of performing a linear search on all nodes of a linked list it receives.
 
-ExceptionHandler
+3. ExceptionHandler
 
-An ExceptionHandler class was used to handle exceptions that may occur in the application. Its static methods are called at specific moments.
+An ExceptionHandler class was used to handle exceptions that may occur in the application.
+A class for custom exception handling was used, to treat some exceptions that can occur in the application. There are two exceptions in specific: EmptyList() e SizeException(), when the list is empty e when try to travese a node that pass the list limit/size. Some exceptions are throwed in these ocasions, in the LinkedList class, which are treated by this ExceptionHandler class.
 
 3.1 sizeExceptionMessage() Method
 
@@ -127,7 +128,7 @@ This static method, from the ExceptionHandler class, returns an error code -2 in
 
 4. Main
 
-The main algorithm, where a menu was written, allows the execution and testing of most of the functionalities/operations of the list.
+The main algorithm, where a menu was written, allows the execution and testing of the functionalities/operations of the list.
 
 #
 
@@ -164,7 +165,7 @@ Interfaces
 
 1.1 Interface List
 
-É a interface que possui todos os métodos que devem ser implementados por uma lista ligada de números inteiros.
+É a interface que possui todos os métodos que devem ser implementados por uma lista de números inteiros.
 
 1.2 Interface Search
 
@@ -198,11 +199,11 @@ A lista ligada é capaz de remover nós de qualquer posição da lista.
 
 2.2.3 Método getNode()
 
-A lista ligada é capaz de retornar o valor de um nó com base em sua posição na lista.
+A lista ligada é capaz de retornar o valor de um nó com base em sua posição na lista. Retorna -1 em caso de SizeException().
 
 2.2.4 Método countNodes()
 
-A lista ligada é capaz, por meio desse método, de retornar a quantidade de nós que existem na lista (o seu tamanho). O retorno desse método é utilizado em diversas outras operações da lista.
+A lista ligada é capaz, por meio desse método, de retornar a quantidade de nós que existem na lista (o seu tamanho). O retorno desse método é utilizado em diversas outras operações da lista. Retorna 0 em caso de EmptyList().
 
 2.2.5 Método destroy()
 
@@ -214,7 +215,7 @@ A lista ligada é capaz de retornar cada nó, de forma linear, exibindo o valor 
 
 2.2.7 Métodos firstNode() e lastNode()
 
-A lista ligada é capaz de exibir o primeiro e o último nó da lista, por meio desses métodos.
+A lista ligada é capaz de exibir o primeiro e o último nó da lista, por meio desses métodos. Retorna 0 em caso de EmptyList().
 
 2.2.8 Método isEmpty()
 
@@ -226,7 +227,7 @@ A lista ligada é capaz de exibir todos os nós com números pares e ímpares pr
 
 2.2.10 Método sumNodes()
 
-A lista ligada é capaz de somar todos os valores de seus nós, por meio desse método.
+A lista ligada é capaz de somar todos os valores de seus nós, por meio desse método. Retorna 0 em caso de EmptyList().
 
 2.3 Classe SortImplementation
 
@@ -246,16 +247,8 @@ A busca linear, através do seu método de busca, é capaz de realizar uma busca
 
 3. ExceptionHandler
 
-Uma classe para tratamento de exceções foi utilizada, para tratar algumas exceções que podem ocorrer na aplicação e chamar seus métodos estáticos em determinados momentos.
-
-3.1 Método sizeExceptionMessage()
-
-Esse método, da classe ExceptionHandler, retorna um código de erro -1, no caso de uma tentativa de buscar um nó de uma posição inexistente na lista.
-
-3.2 Método emptyList()
-
-Esse método, da classe ExceptionHandler, retorna um código de erro -2, no caso de uma lista estar vazia. 
+Uma classe para tratamento de exceções foi utilizada, para tratar algumas exceções que podem ocorrer na aplicação. São duas exceções em específico: EmptyList() e SizeException(), para quando a lista estiver vazia e para quando tentar percorrer um nó que ultrapassa o limite/tamanho da lista. Algumas exceções são lançadas nessas ocasiões, na classe LinkedList, que são tratadas por essa classe ExceptionHandler.
 
 4. Main
 
-O algoritmo principal, onde um menu foi escrito, que permite a execução e testagem da maioria das funcionalidades/operações da lista.
+O algoritmo principal, onde um menu foi escrito, que permite a execução e testagem das funcionalidades/operações da lista.
