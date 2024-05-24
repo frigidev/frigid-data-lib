@@ -18,9 +18,9 @@ public interface List {
 	
 	public void showList();
 	
-	public void firstNode();
+	public int firstNode();
 	
-	public void lastNode();
+	public int lastNode();
 	
 	public boolean isEmpty();
 
