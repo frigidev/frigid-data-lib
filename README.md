@@ -130,6 +130,8 @@ This static method, from the ExceptionHandler class, returns an error code -2 in
 
 The main algorithm, where a menu was written, allows the execution and testing of the functionalities/operations of the list.
 
+## Made for study purposes
+
 #
 
 # Documentação (Português)
@@ -252,3 +254,5 @@ Uma classe para tratamento de exceções foi utilizada, para tratar algumas exce
 4. Main
 
 O algoritmo principal, onde um menu foi escrito, que permite a execução e testagem das funcionalidades/operações da lista.
+
+## Feito para fins de estudos
