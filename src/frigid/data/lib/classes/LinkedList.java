@@ -1,12 +1,10 @@
 package frigid.data.lib.classes;
 
-import javax.swing.JOptionPane;
-
 import frigid.data.lib.exceptionhandler.ExceptionHandler;
 import frigid.data.lib.interfaces.AdditionalMethods;
 import frigid.data.lib.interfaces.List;
 
-public class LinkedList implements List, AdditionalMethods{
+public class LinkedList implements List, AdditionalMethods {
 	
 	private Node first;
 	private Node last;
@@ -88,75 +86,82 @@ public class LinkedList implements List, AdditionalMethods{
 		Node current = this.getFirst();
 		Node previous = null;
 		
-		if(!isEmpty()) {
-			if(current.getValue() == element) {
-				this.setFirst(this.getFirst().getNext());
-				current = null;
-			}
-			
-			while(current != null && current.getValue() != element) {
-				previous = current;
-				current = current.getNext();
-				if(current == null) {
-					JOptionPane.showMessageDialog(null, "The number that you tried to remove was not found.");
+		try {
+			if(!isEmpty()) {
+				if(current.getValue() == element) {
+					this.setFirst(this.getFirst().getNext());
+					current = null;
 				}
-				/*
-				 * Previous points to the last node of the list, if all the list was traversed, then the conditional below has to fill this case
-				 * (when the element == the value of the last node of the list).
-				 */
-				if(previous.getValue() == element) {
-					previous.setNext(null);
+				
+				while(current != null && current.getValue() != element) {
+					previous = current;
+					current = current.getNext();
+					if(current == null) {
+						System.out.println("The number that you tried to remove was not found.");
+					}
+					/*
+					 * Previous points to the last node of the list, if all the list was traversed, then the conditional below has to fill this case
+					 * (when the element == the value of the last node of the list).
+					 */
+					if(previous.getValue() == element) {
+						previous.setNext(null);
+					}
 				}
+				
+				if(current != null) {
+					previous.setNext(current.getNext());
+				}
+				
+				this.setLast(previous);
+				
+			}else {
+				throw new ExceptionHandler("The list is empty");
 			}
-			
-			if(current != null) {
-				previous.setNext(current.getNext());
-			}
-			
-			this.setLast(previous);
-			
-		}else {
-			ExceptionHandler.emptyList();
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	
 	@Override
 	public int getNode(int position) {
 		Node current = this.getFirst();
+		
 		int size = countNodes();
 		
-		if(position <= size && current != null && position > 0) {
-			for(int i=1; i<position; i++) { 
-				current = current.getNext();
+		try {
+			if(position <= size && current != null && position > 0) {
+				for(int i=1; i<position; i++) { 
+					current = current.getNext();
+				}	
+				return current.getValue();
+			}else {
+				throw new ExceptionHandler("The position desired exceed the size of the list");
 			}
-			return current.getValue();
-		}else {
-			return ExceptionHandler.sizeExceptionMessage();
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage() + " Error: " + e.errorCodeSizeException());
+			return e.errorCodeSizeException();
 		}
+		
 	}
 
 	@Override
 	public int countNodes() {
 		Node current = this.getFirst();
-		int counter = 0;
-		/*
-		 * This control variable below is declared to avoid an emptyList() message at the invocation of this method when a first node is added to the
-		 * list.
-		 */
-		int control;
-		
-		if(this.getFirst() != null) {
-			control = 1;
-			if(!isEmpty() && control == 1) {
+		try {
+			int counter = 0;
+			if(this.getFirst() != null) {
 				while(current != null) {
 					current = current.getNext();
 					counter++;
 				}
+				return counter;
 			}else {
-				return ExceptionHandler.emptyList();
+				throw new ExceptionHandler("The list is empty");
 			}
-		}		
-		return counter;
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
+			return e.errorCodeEmptyList();
+		} 
 	}
 
 	@Override
@@ -170,31 +175,46 @@ public class LinkedList implements List, AdditionalMethods{
 		Node current = this.getFirst();
 		int i = 1;
 		
-		while(current != null) {
-			System.out.println("Node: " + current.getValue() + " of the position: " + i + " of the list.");
-			current = current.getNext();
-			i++;
-		}
-		if(isEmpty()) {
-			ExceptionHandler.emptyList();
-		}
-	}
-
-	@Override
-	public void firstNode() {
-		if(!isEmpty()) {
-			JOptionPane.showMessageDialog(null, "The first node of the list is: " + this.getFirst().getValue());
-		}else {
-			ExceptionHandler.emptyList();
+		try {
+			while(current != null) {
+				System.out.println("Node: " + current.getValue() + " of the position: " + i + " of the list.");
+				current = current.getNext();
+				i++;
+			}
+			if(isEmpty()) {
+				throw new ExceptionHandler("The list is empty");
+			}
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
 	@Override
-	public void lastNode() {
-		if(!isEmpty()) {
-			JOptionPane.showMessageDialog(null, "The last node of the list is: " + this.getLast().getValue());
-		}else {
-			ExceptionHandler.emptyList();
+	public int firstNode() {
+		try {
+			if(!isEmpty()) {
+				return this.getFirst().getValue();
+			}else {
+				throw new ExceptionHandler("The list is empty");
+			}
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
+			return e.errorCodeEmptyList();
+		}
+		
+	}
+
+	@Override
+	public int lastNode() {
+		try {
+			if(!isEmpty()) {
+				return this.getLast().getValue();
+			}else {
+				throw new ExceptionHandler("The list is empty");
+			}
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
+			return e.errorCodeEmptyList();
 		}
 	}
 
@@ -221,8 +241,6 @@ public class LinkedList implements List, AdditionalMethods{
 				}
 				current = current.getNext();
 			}
-		}else {
-			ExceptionHandler.emptyList();
 		}
 	}
 
@@ -238,24 +256,27 @@ public class LinkedList implements List, AdditionalMethods{
 				}
 				current = current.getNext();
 			}
-		}else {
-			ExceptionHandler.emptyList();
 		}
 	}
 
 	@Override
 	public int sumNodes() {
 		Node current = this.getFirst();
-		int sum = -2;
+		int sum = 0;
 		
-		if(!isEmpty()) {
-			while(current != null) {
-				sum = sum + current.getValue();
-				current = current.getNext();
+		try {
+			if(!isEmpty()) {
+				while(current != null) {
+					sum = sum + current.getValue();
+					current = current.getNext();
+				}
+				return sum;
+			}else {
+				throw new ExceptionHandler("The list is empty");
 			}
-			return sum+2;
-		}else {
-			return sum;
+		}catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
+			return e.errorCodeEmptyList();
 		}
 	}
 }
