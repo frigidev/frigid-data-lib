@@ -1,16 +1,28 @@
 package frigid.data.lib.exceptionhandler;
 
-import javax.swing.JOptionPane;
-
-public class ExceptionHandler {
+public class ExceptionHandler extends Exception{
 	
-    public static int sizeExceptionMessage() {
-        JOptionPane.showMessageDialog(null, "Error. The element searched is null. Error code: -1");
-        return -1;
+	private int error;
+	
+	public void setError(int error) {
+		this.error = error;
+	}
+	
+	public int getError() {
+		return this.error;
+	}
+	
+    public ExceptionHandler(String str){
+    	super(str);
     }
     
-    public static int emptyList() {
-    	JOptionPane.showMessageDialog(null, "Error. The list is empty. Error code: -2");
-    	return -2;
+    public int errorCodeEmptyList() {
+    	this.setError(0);
+    	return this.getError();
+    }
+    
+    public int errorCodeSizeException() {
+    	this.setError(-1);
+    	return this.getError();
     }
 }
