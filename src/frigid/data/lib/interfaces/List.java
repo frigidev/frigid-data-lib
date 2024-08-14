@@ -1,5 +1,8 @@
 package frigid.data.lib.interfaces;
 
+import frigid.data.lib.classes.LinkedList;
+import frigid.data.lib.classes.Node;
+
 public interface List {
 	
 	public void addEnd(int element);
@@ -23,5 +26,9 @@ public interface List {
 	public int lastNode();
 	
 	public boolean isEmpty();
-
+	
+	public void linearSearch(int searched);
+	
+	public void sort();
+	
 }
