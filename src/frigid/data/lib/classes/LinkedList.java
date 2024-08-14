@@ -1,5 +1,7 @@
 package frigid.data.lib.classes;
 
+import javax.swing.JOptionPane;
+
 import frigid.data.lib.exceptionhandler.ExceptionHandler;
 import frigid.data.lib.interfaces.AdditionalMethods;
 import frigid.data.lib.interfaces.List;
@@ -225,6 +227,75 @@ public class LinkedList implements List, AdditionalMethods {
 		}
 		else {
 			return false;
+		}
+	}
+	
+	/*
+	 * A method to make a search for an element in a LinkedList. It works better than binary search for LinkedLists, cause nodes can't be accessed 
+	 * directly in a LinkedList as an array.
+	 */
+	@Override
+	public void linearSearch(int searched) {
+		Node ptr = this.getFirst();
+		
+		boolean found = false;
+		int size = this.countNodes();
+		
+		if(size == 0) {
+			return;
+		}
+		
+		for(int i=0; i<size; i++) {
+			if(this.getFirst().getValue() == searched || ptr.getValue() == searched) {
+				found = true;
+				break;
+			}else if(ptr.getNext() != null) {
+				ptr = ptr.getNext();
+			}
+		}
+
+		if(found) {
+			JOptionPane.showMessageDialog(null, "Element found. The element exists in the list.");
+		}else {
+			JOptionPane.showMessageDialog(null, "Element not found. The element doesn't exists in the list.");
+		}
+	}
+	
+	/*
+	 * This method is a simple sort algorithm, called bubbleSort, that works fine for sorting a small list of elements, with a 
+	 * space complexity of O(n^2) in the worst case.
+	 */
+	@Override
+	public void sort() {
+		Node current;
+		int aux;
+		
+		try {
+			if(this.isEmpty()) {
+				throw new ExceptionHandler("The list is empty");
+			}
+			while(true) {
+				current = this.getFirst();
+				boolean swapped = false;
+				while(current != null) {
+					Node next = current.getNext();
+					while(next != null) {
+						if(current.getValue() > next.getValue()) {
+							swapped = true;
+							aux = current.getValue();
+							current.setValue(next.getValue());
+							next.setValue(aux);
+						}
+						next = next.getNext();
+					}
+					current = current.getNext();
+				}
+				if(!swapped) {
+					break;
+				}
+			}
+		} catch(ExceptionHandler e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
