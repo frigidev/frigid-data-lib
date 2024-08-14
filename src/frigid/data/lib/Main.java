@@ -2,9 +2,7 @@ package frigid.data.lib;
 
 import javax.swing.JOptionPane;
 
-import frigid.data.lib.classes.LinearSearch;
 import frigid.data.lib.classes.LinkedList;
-import frigid.data.lib.classes.SortImplementation;
 
 public class Main {
 	public static void main(String[] args) {
@@ -58,16 +56,15 @@ public class Main {
 							"show the sum of all numbers\n5 - to reset the list\n6 - back to main menu"));
 					switch(moreOptions) {
 						case 1: 
-							SortImplementation sortList = new SortImplementation();
-							sortList.sort(list);
+							list.sort();
 							if(!list.isEmpty()) {
 								JOptionPane.showMessageDialog(null, "The numbers now are sorted. The current list is displayed on the console");
 								list.showList();
 							}
 							continue;
 						case 2:
-							LinearSearch search = new LinearSearch();
-							search.linearSearch(list);
+							int searched = Integer.parseInt(JOptionPane.showInputDialog("Enter a number that you want to search."));
+							list.linearSearch(searched);
 							continue;
 						case 3:
 							int choose = Integer.parseInt(JOptionPane.showInputDialog("1 - for all pair numbers\n2 - for all odd numbers"));
