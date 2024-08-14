@@ -12,17 +12,17 @@ public class ExceptionHandler extends Exception{
 		return this.error;
 	}
 	
-    public ExceptionHandler(String str){
-    	super(str);
-    }
-    
-    public int errorCodeEmptyList() {
-    	this.setError(0);
-    	return this.getError();
-    }
-    
-    public int errorCodeSizeException() {
-    	this.setError(-1);
-    	return this.getError();
-    }
+	public ExceptionHandler(String str){
+		super(str);
+	}
+	
+	public int errorCodeEmptyList() {
+		this.setError(0);
+		return this.getError();
+	}
+	
+	public int errorCodeSizeException() {
+		this.setError(-1);
+		return this.getError();
+	}
 }
