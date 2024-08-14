@@ -9,7 +9,7 @@ Data structures are structures used to store data in an application. The most co
 
 These disadvantages include:
 
-Fixed size: The size of an array is defined at creation, which can lead to problems in applications where the volume of data tends to grow or ends up growing too much.
+Fixed size: The size of an array is defined at creation, which can lead to problems in applications where the volume of data tends to grow or ends up growing too much. Because of that, binary searches are not the ideal to search for an element in a LinkedList.
 
 Memory usage: Unused allocated space in an array remains occupying unused memory on the machine, which is another disadvantage of its use.
 
@@ -35,15 +35,7 @@ Interfaces
 
 This interface contains all the methods that must be implemented by a list of integers.
 
-1.2 Search Interface
-
-This interface contains the signature of a linear search method to be implemented.
-
-1.3 Sort Interface
-
-This interface contains the signature of a sorting method to be implemented.
-
-1.4 AdditionalMethods Interface
+1.2 AdditionalMethods Interface
 
 This interface contains some additional methods to be implemented in a linked list of integers.
 
@@ -97,34 +89,18 @@ The linked list can display all nodes with pairs and odd numbers present in the 
 
 The linked list can sum all the values of its nodes using this method.
 
-2.3 SortImplementation Class
+2.2.11 linearSearch() Method
 
-This class implements the sorting algorithm, where I used a bubble sort adapted for a linked list. The Sort interface is implemented, and the method is overridden.
+It is the method that implements the linear search algorithm on the linked list. This search method, is able to make a linear search through all the nodes of the linked list, searching for the element that he receives.
 
-2.3.1 sort() Method
+2.2.12 sort() Method
 
-This method is capable of sorting all the nodes in the list based on their values in ascending order. This sorting is done using a bubble sort method, which has a time complexity of O(n^2) in the worst case.
-
-2.4 LinearSearch Class
-
-This class implements the linear search algorithm in the linked list. The Search interface is implemented, and the method is overridden.
-
-2.4.1 search() Method
-
-The linear search, through its search method, is capable of performing a linear search on all nodes of a linked list it receives.
+The sort() method is able to sort all the nodes of the list based on his values, in asc order. To that, this sorting is made through a bubbleSort method, which has time complexity of O(n^2) in the worst case.
 
 3. ExceptionHandler
 
 An ExceptionHandler class was used to handle exceptions that may occur in the application.
 A class for custom exception handling was used, to treat some exceptions that can occur in the application. There are two exceptions in specific: EmptyList() e SizeException(), when the list is empty e when try to travese a node that pass the list limit/size. Some exceptions are throwed in these ocasions, in the LinkedList class, which are treated by this ExceptionHandler class.
-
-3.1 sizeExceptionMessage() Method
-
-This static method, from the ExceptionHandler class, returns an error code -1 in the case of an attempt to retrieve a node from a non-existent position in the list.
-
-3.2 emptyList() Method
-
-This static method, from the ExceptionHandler class, returns an error code -2 in the case of an empty list.
 
 4. Main
 
@@ -157,7 +133,7 @@ Melhor uso de memória: Como ela cresce dinamicamente, não há espaço alocado 
 
 Porém ela possui algumas desvantagens, como:
 
-Acesso aos nós do meio: O acesso aos nós do meio da lista não é tão fácil como em vetores/matrizes, onde é possível acessar um elemento pelo índice.
+Acesso aos nós do meio: O acesso aos nós do meio da lista não é tão fácil como em vetores/matrizes, onde é possível acessar um elemento pelo índice. Por causa disso, as buscas binárias não são o ideal para buscar por um elemento em uma lista ligada.
 
 Algoritmos recursivos: Algoritmos mais legíveis e limpos fazendo uso de chamadas recursivas, porém mais complexos, uma vez que algoritmos recursivos são mais complexos de visualizar e fazer o teste de mesa do que algoritmos iterativos, já que as chamadas recursivas vão ficando acumuladas na pilha de memória.
 
@@ -169,15 +145,7 @@ Interfaces
 
 É a interface que possui todos os métodos que devem ser implementados por uma lista de números inteiros.
 
-1.2 Interface Search
-
-É a interface que possui a assinatura de um método de busca linear, para ser implementado.
-
-1.3 Interface Sort
-
-É a interface que possui a assinatura de um método de ordenação, para ser implementado.
-
-1.4 Interface AdditionalMethods
+1.2 Interface AdditionalMethods
 
 É a interface que possui alguns métodos adicionais para serem implementados em uma lista ligada de números inteiros.
 
@@ -231,21 +199,13 @@ A lista ligada é capaz de exibir todos os nós com números pares e ímpares pr
 
 A lista ligada é capaz de somar todos os valores de seus nós, por meio desse método. Retorna 0 em caso de EmptyList().
 
-2.3 Classe SortImplementation
+2.2.11 Método linearSearch()
 
-É a classe que implementa o algoritmo de ordenação, onde utilizei um bubbleSort adaptado para lista ligada. A interface Sort é implementada, e o método sobrescrito.
+É o método que implementa o algoritmo de busca linear na lista ligada. Esse método de busca, é capaz de realizar uma busca linear em todos os nós da lista ligada, procurando pelo elemento que ele receber.
 
-2.3.1 Método sort()
+2.2.12 Método sort()
 
-A classe SortImplementation, por meio do seu método sort(), é capaz de ordenar todos os nós da lista que ela receber com base em seus valores, em ordem crescente. Para isso, essa ordenação é feita através de um método bubbleSort, de complexidade de tempo O(n^2) no pior caso.
-
-2.4 Classe LinearSearch
-
-É a classe que implementa o algoritmo de busca linear na lista ligada. A interface Search é implementada, e o método sobrescrito.
-
-2.4.1 Método search()
-
-A busca linear, através do seu método de busca, é capaz de realizar uma busca linear em todos os nós de uma lista ligada que ela receber.
+O método sort() é capaz de ordenar todos os nós da lista com base em seus valores, em ordem crescente. Para isso, essa ordenação é feita através de um método bubbleSort, de complexidade de tempo O(n^2) no pior caso.
 
 3. ExceptionHandler
 
